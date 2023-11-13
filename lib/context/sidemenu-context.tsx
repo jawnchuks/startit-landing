@@ -1,60 +1,51 @@
-// components/SideMenuContext.tsx
-import React, { createContext, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+'use client'
 
-interface SideMenuContextProps {
-  children: React.ReactNode;
+
+import { AnimatePresence } from "framer-motion";
+import { createContext, ReactNode, useContext, useState } from "react";
+
+interface SideMenuContextValue {
+  showSideMenu: (content: ReactNode) => void;
+  hideSideMenu: () => void;
 }
 
-interface SideMenuState {
-  cartOpen: boolean;
-  invitationFormOpen: boolean;
+const SideMenuContext = createContext<SideMenuContextValue | undefined>(
+  undefined
+);
+
+interface SideMenuProviderProps {
+  children: ReactNode;
 }
 
-interface SideMenuActions {
-  openCart: () => void;
-  closeCart: () => void;
-  openInvitationForm: () => void;
-  closeInvitationForm: () => void;
-}
+export function SideMenuProvider({
+  children,
+}: SideMenuProviderProps): JSX.Element {
+  const [sideMenuContent, setSideMenuContent] = useState<ReactNode | null>(
+    null
+  );
 
-const initialSideMenuState: SideMenuState = {
-  cartOpen: false,
-  invitationFormOpen: false,
-};
+  const showSideMenu = (content: ReactNode) => {
+    setSideMenuContent(content);
+  };
 
-const SideMenuContext = createContext<SideMenuState & SideMenuActions>({
-  ...initialSideMenuState,
-  openCart: () => {},
-  closeCart: () => {},
-  openInvitationForm: () => {},
-  closeInvitationForm: () => {},
-});
-
-export const SideMenuProvider: React.FC<SideMenuContextProps> = ({ children }) => {
-  const [cartOpen, setCartOpen] = useState(false);
-  const [invitationFormOpen, setInvitationFormOpen] = useState(false);
-
-  const openCart = () => setCartOpen(true);
-  const closeCart = () => setCartOpen(false);
-  const openInvitationForm = () => setInvitationFormOpen(true);
-  const closeInvitationForm = () => setInvitationFormOpen(false);
-  // Add property type...
+  const hideSideMenu = () => {
+    setSideMenuContent(null);
+  };
 
   return (
-    <SideMenuContext.Provider
-      value={{
-        cartOpen,
-        invitationFormOpen,
-        openCart,
-        closeCart,
-        openInvitationForm,
-        closeInvitationForm,
-      }}
-    >
+    <SideMenuContext.Provider value={{ showSideMenu, hideSideMenu }}>
       {children}
+      <AnimatePresence initial={true} mode="wait">
+        {sideMenuContent}
+      </AnimatePresence>
     </SideMenuContext.Provider>
   );
-};
+}
 
-export const useSideMenu = () => React.useContext(SideMenuContext);
+export function useSideMenu(): SideMenuContextValue {
+  const context = useContext(SideMenuContext);
+  if (!context) {
+    throw new Error("useSideMenu must be used within a SideMenuProvider");
+  }
+  return context;
+}

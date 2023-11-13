@@ -1,54 +1,21 @@
 "use client";
 import HeroMasonry from "../../../../../public/images/hero-masonry.png";
-
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-import Link from "next/link";
-import { TransitionStart } from "@/lib/utils/transition";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Button from "@/components/Common/Button/Button";
-import Icon from "@/components/Common/Icons/Icon";
-
-import { inter, cormorantGaramond, vina, rubik } from "../../../../../fonts";
+import { ParallaxText } from "@/lib/hooks/useMotionScroll";
+import { rubik } from "@/fonts";
+import { useModal } from "@/lib/context/modal-context";
+import WaitlistForm from "@/components/UI/Forms/WaitListForm";
 
 export default function Hero() {
-  const words = ["Estate", "Gated Community", "Service Apartments"];
+  const { showModal } = useModal();
 
-  const transition = { duration: 1, ease: "easeInOut" };
 
-  const itemVariants = {
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ...transition,
-        delay: 0.5, // Delay before new word appears
-      },
-    },
-    exit: {
-      y: 100,
-      opacity: 0,
-      transition,
-    },
-  };
-
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // Animate out the current word
-      setCurrentWordIndex((prevIndex) => {
-        return (prevIndex + 1) % words.length;
-      });
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, []);
+  const handleWaitlist = () => {
+    showModal(
+      <WaitlistForm />
+    )   
+  }
 
   return (
     <div className="relative z-1 w-full overflow-hidden h-full">
@@ -73,13 +40,13 @@ export default function Hero() {
           project
         </p>
 
-        <button className="px-8 py-3 font-medium bg-primaryGreen text-secondaryDarkGreen w-fit rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
+        <button onClick={handleWaitlist} className="px-8 py-3 font-medium bg-primaryGreen text-secondaryDarkGreen w-fit rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
           Get started
         </button>
       </motion.div>
 
       <motion.div
-        className="w-[210vw] overflow-x-scroll hide-scroll-bar block mt-6"
+        className="w-[1000vw] md:w-[900vw] overflow-x-scroll hide-scroll-bar block mt-6 relative z-10"
         initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -87,11 +54,14 @@ export default function Hero() {
           duration: 0.9,
         }}
       >
-        <Image
+        <ParallaxText baseVelocity={1}>
+          <Image
           src={HeroMasonry}
           alt="hero-masonry"
-          className=" mx-auto relative z-10 w-full"
+          className=" mx-auto w-full"
         />
+        </ParallaxText>
+        
       </motion.div>
     </div>
   );

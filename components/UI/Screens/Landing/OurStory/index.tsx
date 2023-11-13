@@ -1,19 +1,19 @@
-// components/OurStory.tsx
 
+import Image from "next/image";
 import React from "react";
+import StoryOne from "../../../../../public/images/story-one.jpg"
+import StoryTwo from "../../../../../public/images/story-two.jpg"
 
 const OurStory: React.FC = () => {
   return (
-    <section className=" bg-primaryWhite relative z-10">
+    <section id="our-story" className=" bg-primaryWhite relative z-10 overflow-hidden">
       {/* Container */}
       <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32 flex flex-col gap-[4rem]" >
         {/* Component */}
-        <div className="flex flex-col-reverse justify-start gap-8 sm:gap-20 lg:flex-row">
-          <img
-            src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635b53eeec84c014ec421d16_Group%20183.png"
-            alt=""
-            className="inline-block max-w-xl"
-          />
+        <div className="flex flex-col-reverse justify-start  gap-8 sm:gap-20 lg:flex-row">
+         
+         <Image className="inline-block md:max-w-2xl mx-auto relative z-10 rounded-lg " src={StoryOne} alt="" objectFit='cover' />
+    
           <div className="flex flex-col items-start lg:justify-center">
             <h4 className="text-4xl text-primaryGreen font-semibold my-6">
               Our Story
@@ -61,11 +61,8 @@ const OurStory: React.FC = () => {
               about contributing.
             </p>
           </div>
-                <img
-            src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635b53eeec84c014ec421d16_Group%20183.png"
-            alt=""
-            className="inline-block max-w-xl"
-          />
+                    <Image className="md:inline-block md:max-w-2xl hidden mx-auto relative z-10 rounded-lg " src={StoryTwo} alt="" objectFit='cover' />
+
         </div>
       </div>
     </section>

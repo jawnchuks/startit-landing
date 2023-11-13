@@ -6,6 +6,8 @@ import {
   useTransform,
 } from "framer-motion";
 import { cormorantGaramond, inter } from "@/fonts";
+import { useModal } from "@/lib/context/modal-context";
+import WaitlistForm from "@/components/UI/Forms/WaitListForm";
 
 interface TiltCardProps {
   title: string;
@@ -16,6 +18,8 @@ interface TiltCardProps {
   descClassName?: string;
   element?: React.ReactNode;
 }
+
+
 
 const TiltCard: React.FC<TiltCardProps> = ({
   title,
@@ -66,8 +70,18 @@ const TiltCard: React.FC<TiltCardProps> = ({
     y.set(0);
   };
 
+    const { showModal } = useModal();
+
+
+  const handleWaitlist = () => {
+    showModal(
+      <WaitlistForm />
+    )   
+  }
+
   return (
     <motion.div
+    onClick={handleWaitlist}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -75,7 +89,7 @@ const TiltCard: React.FC<TiltCardProps> = ({
         rotateX,
         transformStyle: "preserve-3d",
       }}
-      className={`relative md:h-[30rem] h-[25rem] w-full rounded-xl`}
+      className={`relative md:h-[30rem] h-[25rem] w-full rounded-xl cursor-pointer`}
     >
       <div
         style={{
@@ -148,7 +162,7 @@ export default CTAOne;
 const CardOneSVG = () => {
   return (
     <svg className="md:w-[7rem] md:h-[7rem] w-[3rem] h-[3rem]" viewBox="0 0 540 415" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M9.33203 140.49L155.131 403L497.452 307.153L529.182 40.0894C529.182 40.0894 449.995 154.533 381.226 141.349C315.373 128.725 279.585 3 279.585 3C279.585 3 263.003 155.718 189.283 186.285C122.299 214.058 9.33203 140.49 9.33203 140.49Z" stroke="currentColor" stroke-width="20"/>
+      <path d="M9.33203 140.49L155.131 403L497.452 307.153L529.182 40.0894C529.182 40.0894 449.995 154.533 381.226 141.349C315.373 128.725 279.585 3 279.585 3C279.585 3 263.003 155.718 189.283 186.285C122.299 214.058 9.33203 140.49 9.33203 140.49Z" stroke="currentColor" strokeWidth="20"/>
     </svg>
 
   )
@@ -156,7 +170,7 @@ const CardOneSVG = () => {
 const CardTwoSVG = () => {
   return (
     <svg className="md:w-[7rem] md:h-[7rem] w-[3rem] h-[3rem]" viewBox="0 0 487 425" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M299.744 410L12 212.606M299.744 410L360.264 144.104M299.744 410L474.147 113.583M299.744 410L140.308 185.577M12 212.606L46.5986 79.0554M12 212.606L140.308 185.577M360.264 144.104L140.308 185.577M360.264 144.104L220.351 10M360.264 144.104L390.199 10M360.264 144.104L474.147 113.583M46.5986 79.0554L140.308 185.577M46.5986 79.0554L220.351 10M140.308 185.577L220.351 10M220.351 10H390.199M390.199 10L474.147 113.583" stroke="currentColor" stroke-width="20"/>
+<path d="M299.744 410L12 212.606M299.744 410L360.264 144.104M299.744 410L474.147 113.583M299.744 410L140.308 185.577M12 212.606L46.5986 79.0554M12 212.606L140.308 185.577M360.264 144.104L140.308 185.577M360.264 144.104L220.351 10M360.264 144.104L390.199 10M360.264 144.104L474.147 113.583M46.5986 79.0554L140.308 185.577M46.5986 79.0554L220.351 10M140.308 185.577L220.351 10M220.351 10H390.199M390.199 10L474.147 113.583" stroke="currentColor" strokeWidth="20"/>
 </svg>
 
 

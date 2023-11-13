@@ -4,28 +4,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import StartitLogo from "../../../public/images/startit-foot-logo.png";
+import { useRouter } from 'next/navigation';
 
 const Footer: React.FC = () => {
+  const router = useRouter()
   return (
     <footer className="block bg-primaryWhite relative w-full">
-      {/* Container */}
       <div className="py-16 mx-auto w-full max-w-7xl px-5">
-        {/* Component */}
         <div className="flex-col flex items-center">
-          <Link href="/">
+          <button onClick={() => router.push('/')}>
           <Image
             src={StartitLogo}
             alt="cribbase logo"
             className="md:w-[15rem] w-[10rem] aspect-auto rounded-md"
           />
-        </Link>
+        </button>
        
           <div className="mb-8 mt-8 border-b border-solid border-primaryBlack w-1/3"></div>
           <div className="mb-12 grid-cols-4 grid-flow-col grid w-full max-w-[400px] gap-3">
-            <Link href="#" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="mailto:info@startit.africa" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Email us
             </Link>
-            <Link href="#" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="tel:" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Telephone
             </Link>
             <Link href="#" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
@@ -36,6 +36,7 @@ const Footer: React.FC = () => {
             </Link>
           </div>
           <p className="max-[479px] text-sm">© Copyright 2023. All rights reserved.</p>
+          <div className="max-[479px] text-xs">shoutout to <Link className='' href="https://www.linkedin.com/in/jawnchuks/">jawnchuks</Link></div>
         </div>
       </div>
     </footer>

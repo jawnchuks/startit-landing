@@ -1,6 +1,4 @@
 "use client";
-import HeroMasonry from "../../../../../public/images/hero-masonry.png";
-
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -55,7 +53,7 @@ export default function OurObjectives() {
   const transition = { duration: 1, ease: "easeInOut" };
 
   return (
-    <div className="w-[100%] h-full relative  flex flex-col items-center justify-center py-[0.5rem]">
+    <div id="our-objectives" className="w-[100%] h-full relative  flex flex-col items-center justify-center py-[0.5rem]">
       <motion.div
         initial={{ opacity: 0, y: "20%" }}
         animate={{ opacity: 1, y: "0%" }}

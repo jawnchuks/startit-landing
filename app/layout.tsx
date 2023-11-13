@@ -4,10 +4,10 @@ import { Providers } from "@/lib/utils/providers";
 import Footer from "@/components/Layout/Footer";
 
 export const metadata = {
-  title: "Startit: ",
-  description: "",
+  title: "Startit: Igniting Innovation and Entrepreneurship for a Better Tomorrow",
+  description: "Join StartIt and be at the forefront of innovation and entrepreneurship. Explore investment opportunities, collaborative projects, and groundbreaking ventures. Start your journey with StartIt for a future of endless possibilities.",
   favicon: "./favicon.ico",
-  image:'../public/icons/cribbase-logo-sm.svg',
+  image:'../public/images/startit-nav-logo.png',
   url: 'https://startit.africa',
   type: 'website',
   keywords: ["Startup", "Funding", "Investments", "Social"],

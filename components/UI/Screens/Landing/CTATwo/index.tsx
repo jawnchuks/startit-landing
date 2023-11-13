@@ -1,6 +1,16 @@
+import WaitlistForm from '@/components/UI/Forms/WaitListForm';
+import { useModal } from '@/lib/context/modal-context';
 import React from 'react';
 
 const CTATwo: React.FC = () => {
+    const { showModal } = useModal();
+
+
+  const handleWaitlist = () => {
+    showModal(
+      <WaitlistForm />
+    )   
+  }
   return (
     <section className='w-full bg-primaryWhite py-[5rem] relative z-10'>
       {/* Container */}
@@ -17,7 +27,7 @@ const CTATwo: React.FC = () => {
                 <p className="text-gray-200 text-base"> Be the first to experience positive change! Join our waitlist now and receive exclusive email updates on the upcoming Startit app. Your journey towards empowering communities and driving social innovation starts here. Together, let&apos;s make a difference!</p>
               </div>
             </div>
-             <button className="px-8 py-3 font-medium bg-primaryGreen text-secondaryDarkGreen w-fit rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
+             <button onClick={handleWaitlist} className="px-8 py-3 font-medium bg-primaryGreen text-secondaryDarkGreen w-fit rounded-full transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
               Join waitlist
             </button>
           </div>

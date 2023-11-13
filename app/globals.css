@@ -16,10 +16,68 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .hide-scroll-bar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
+}
+
+
+
+.progress {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--accent);
+  bottom: 100px;
+}
+
+.parallax {
+  overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax .scroller {
+
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.parallax span {
+  display: block;
+  margin-right: 30px;
+}
+
+
+
+
+a:after {
+  display:block;
+  content: '';
+  width: inherit;
+  border-bottom: solid 3px #1FCC6E;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+a:hover:after { transform: scaleX(1); }
+
+a.from-left:after {
+  transform-origin: left;
+}
+
+a.from-right:after {
+  transform-origin: right;
 }
