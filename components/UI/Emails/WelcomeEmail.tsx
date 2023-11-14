@@ -37,7 +37,8 @@ export const WelcomeEmail = ({
           <Container style={container}>
             <Section>
               <Img
-                src={StartItLogo.src}
+              src={`${baseUrl}/static/media/startit-nav-logo.4b3e802b.png`}
+                // src={StartItLogo.src}
                 width="120"
                 height="40"
                 alt="Startit"
@@ -121,5 +122,5 @@ const button = {
   textAlign: 'center' as const,
   display: 'block',
   width: '100%',
-  padding: '6px'
+  padding: '12px'
 };
