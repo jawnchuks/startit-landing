@@ -62,7 +62,7 @@ const { showSideMenu } = useSideMenu();
         <button onClick={() => router.push('/')}>
           <Image
             src={StartitLogo}
-            alt="cribbase logo"
+            alt="startit logo"
             className="md:w-[8rem] w-[5rem] aspect-auto rounded-md"
           />
         </button>

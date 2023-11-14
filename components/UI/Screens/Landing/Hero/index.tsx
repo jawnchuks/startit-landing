@@ -30,9 +30,9 @@ export default function Hero() {
         }}
       >
         <h1
-          className={`text-[2rem] w-[90%] mx-auto md:text-5xl lg:text-[4.5rem] text-black-100  font-extrabold tracking-tight leading-tight ${rubik.className}`}
+          className={`uppercase text-[2rem] w-[90%] mx-auto md:text-5xl lg:text-[4rem] text-black-100  font-extrabold tracking-tight leading-tight ${rubik.className}`}
         >
-          A Bridge for Social Impact Funding and Development in Africa
+          A bridge for social impact funding and development in Africa
         </h1>
         <p className="text-gray-200 text-base w-5/6 md:w-2/3  mx-auto">
           Startit is an African reward-based crowd funding platform that allows

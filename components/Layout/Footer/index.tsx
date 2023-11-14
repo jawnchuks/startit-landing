@@ -15,23 +15,23 @@ const Footer: React.FC = () => {
           <button onClick={() => router.push('/')}>
           <Image
             src={StartitLogo}
-            alt="cribbase logo"
+            alt="Startit logo"
             className="md:w-[15rem] w-[10rem] aspect-auto rounded-md"
           />
         </button>
        
           <div className="mb-8 mt-8 border-b border-solid border-primaryBlack w-1/3"></div>
           <div className="mb-12 grid-cols-4 grid-flow-col grid w-full max-w-[400px] gap-3">
-            <Link href="mailto:info@startit.africa" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="mailto:verifyforimpact1@gmail.com" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Email us
             </Link>
-            <Link href="tel:" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="tel:+2348131543798" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Telephone
             </Link>
-            <Link href="#" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="https://instagram.com/verifyforimpact?igshid=MmVlMjlkMTBhMg==" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Instagram
             </Link>
-            <Link href="#" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
+            <Link href="https://facebook.com/" className="mx-auto flex-col flex items-center justify-center font-normal text-small text-gray-200">
               Facebook
             </Link>
           </div>

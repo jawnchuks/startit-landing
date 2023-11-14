@@ -136,7 +136,7 @@ const Screen: React.FC = () => {
     <div className="relative z-0 grid h-full w-full place-content-center overflow-hidden rounded-[20px] bg-primaryWhite">
       <Image
         src={StartitLogo}
-        alt="cribbase logo"
+        alt="startit logo"
         className="md:w-[10rem] w-[8rem] aspect-auto rounded-md"
       />
 

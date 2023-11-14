@@ -11,7 +11,7 @@ const AboutUs: React.FC = () => {
        
         <Image
             src={VerifyImpactLogo}
-            alt="cribbase logo"
+            alt="startit logo"
             className="md:w-[35rem] w-[25rem] aspect-auto rounded-md"
           />
         <p className="mb-8 max-w-lg text-base text-gray-200 sm:text-base">

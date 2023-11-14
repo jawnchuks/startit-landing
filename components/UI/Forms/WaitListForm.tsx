@@ -1,19 +1,48 @@
-import React from "react";
+'use client'
+import React, {useState} from "react";
 import Modal from "../Modal/Modal";
 import { useModal } from "@/lib/context/modal-context";
 import { toast } from "react-hot-toast";
 
 const WaitlistForm: React.FC = () => {
-    const [selectedOption, setSelectedOption] = React.useState("");
+ const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+    selectedOption: "",
+  });
 
   const { hideModal } = useModal();
-  const onSubmit = (e: any) => {
-    // set timer to 3 secs before showing a toast message
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTimeout(() => {
-      toast("Thank you for your interest!");
-      hideModal();
-    }, 2000);
+    const response = await fetch('/api/email', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formData),
+    })
+
+    if (response.status === 200) {
+      setFormData({
+        name: "",
+        email: "",
+        address: "",
+        phoneNumber: "",
+        selectedOption: "",
+      });
+      hideModal()
+      toast.success(`Nice one ${formData.name}, your email has been received`)
+    }
+
   };
   return (
     <Modal onClose={hideModal} isOpen={true}>
@@ -66,28 +95,36 @@ const WaitlistForm: React.FC = () => {
             >
               <div className="relative">
                 <input
-                  type="text"
                   className="mb-4 block h-9 w-full border border-gray-400 rounded-full bg-primaryWhite px-3 py-6 text-sm text-gray-100 focus:ring-0"
+                  type="text"
                   maxLength={256}
-                  name="name"
                   placeholder="Name"
                   required
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="relative">
                 <input
-                  type="email"
                   className="mb-4 block h-9 w-full border border-gray-400 rounded-full bg-primaryWhite px-3 py-6 text-sm text-gray-100 focus:ring-0"
+                  type="email"
                   placeholder="Email Address"
                   required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="relative">
                 <input
-                  type="text"
                   className="mb-4 block h-9 w-full border border-gray-400 rounded-full bg-primaryWhite px-3 py-6 text-sm text-gray-100 focus:ring-0"
-                  placeholder="Location"
+                  type="text"
+                  placeholder="Address"
                   required
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="relative">
@@ -96,14 +133,18 @@ const WaitlistForm: React.FC = () => {
                   className="mb-4 block h-9 w-full border border-gray-400 rounded-full bg-primaryWhite px-3 py-6 text-sm text-gray-100 focus:ring-0"
                   placeholder="Phone Number"
                   required
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="relative mb-4 pb-2">
                 <select
                   className="mb-4 block h-9 w-full border border-gray-400 rounded-full bg-primaryWhite px-3 py-6 text-sm text-gray-100 focus:ring-0"
                   required
-                  value={selectedOption}
-                  onChange={(e) => setSelectedOption(e.target.value)}
+                  name="selectedOption"
+                  value={formData.selectedOption}
+                  onChange={handleInputChange}
                 >
                   <option value="" disabled>
                     Choose One
@@ -114,8 +155,8 @@ const WaitlistForm: React.FC = () => {
                   </option>
                   <option value="I want to initiate a project">I want to initiate a project</option>
                 </select>
-                <div className="absolute top-3 left-4 text-gray-400 text-sm pointer-events-none">
-                  {selectedOption ? selectedOption : "Select an option"}
+                <div className="absolute top-3 left-4 text-gray-100 text-sm pointer-events-none">
+                  {formData.selectedOption ? formData.selectedOption : "Select an option"}
                 </div>
               </div>
               <button
