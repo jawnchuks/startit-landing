@@ -18,9 +18,9 @@ interface WelcomeEmailProps {
   userName?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : '';
+// const baseUrl = process.env.VERCEL_URL
+//   ? `https://${process.env.VERCEL_URL}`
+//   : '';
 
 export const WelcomeEmail = ({
   userName = 'User',
@@ -37,8 +37,8 @@ export const WelcomeEmail = ({
           <Container style={container}>
             <Section>
               <Img
-              src={`${baseUrl}/static/media/startit-nav-logo.4b3e802b.png`}
-                // src={StartItLogo.src}
+            //   src={`${baseUrl}/static/media/startit-nav-logo.4b3e802b.png`}
+                src={StartItLogo.src}
                 width="120"
                 height="40"
                 alt="Startit"
